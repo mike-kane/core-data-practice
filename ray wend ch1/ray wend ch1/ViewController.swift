@@ -50,7 +50,7 @@ class ViewController: UIViewController {
         
         let person = NSManagedObject(entity: entity!, insertIntoManagedObjectContext: managedContext)
         
-        person.setValue(name, forKey: "String")
+        person.setValue(name, forKey: "name")
         
         do {
             try managedContext.save()
@@ -62,6 +62,23 @@ class ViewController: UIViewController {
     
     
     var people = [NSManagedObject]()
+    
+    override func viewWillAppear(animated: Bool) {
+        super.viewWillAppear(animated)
+        
+        let appDelegate = UIApplication.sharedApplication().delegate as! AppDelegate
+        
+        let managedContext = appDelegate.managedObjectContext
+        
+        let fetchRequest = NSFetchRequest(entityName: "Person")
+        
+        do {
+            let results = try managedContext.executeFetchRequest(fetchRequest)
+            people = results as! [NSManagedObject]
+        } catch let error as NSError {
+            print("could not fetch \(error), \(error.description)")
+        }
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
