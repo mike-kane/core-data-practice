@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import CoreData
 
 class ViewController: UIViewController {
 
@@ -21,7 +22,7 @@ class ViewController: UIViewController {
             handler: { (action: UIAlertAction) -> Void in
                 
                 let textField = alert.textFields!.first
-                self.names.append(textField!.text!)
+                self.saveName(textField!.text!)
                 self.tableView.reloadData()
         })
         
@@ -39,8 +40,28 @@ class ViewController: UIViewController {
         presentViewController(alert, animated: true, completion: nil)
     }
     
+    func saveName(name: String) {
+        
+        let appDelegate = UIApplication.sharedApplication().delegate as! AppDelegate
+        
+        let managedContext = appDelegate.managedObjectContext
+        
+        let entity = NSEntityDescription.entityForName("Person", inManagedObjectContext: managedContext)
+        
+        let person = NSManagedObject(entity: entity!, insertIntoManagedObjectContext: managedContext)
+        
+        person.setValue(name, forKey: "String")
+        
+        do {
+            try managedContext.save()
+            people.append(person)
+        } catch let error as NSError {
+            print("Could not save \(error), \(error.description)")
+        }
+    }
     
-    var names = [String]()
+    
+    var people = [NSManagedObject]()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -48,13 +69,13 @@ class ViewController: UIViewController {
         title = "\"The List\""
         tableView.registerClass(UITableViewCell.self, forCellReuseIdentifier: "Cell")
     }
-
+    
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
-
-
+    
+    
 }
 
 extension ViewController: UITableViewDataSource {
@@ -62,13 +83,15 @@ extension ViewController: UITableViewDataSource {
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         let cell  = tableView.dequeueReusableCellWithIdentifier("Cell")
         
-        cell!.textLabel!.text = names[indexPath.row]
+        let person = people[indexPath.row]
+    
+        cell!.textLabel!.text = person.valueForKey("name") as? String
         
         return cell!
     }
     
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return names.count
+        return people.count
     }
     
 }

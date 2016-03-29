@@ -35,7 +35,7 @@
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="tM9-Rh-UBh">
-                        <barButtonItem key="rightBarButtonItem" title="Item" systemItem="add" id="MCX-73-1Ft">
+                        <barButtonItem key="rightBarButtonItem" systemItem="add" id="MCX-73-1Ft">
                             <connections>
                                 <action selector="addName:" destination="BYZ-38-t0r" id="aDn-Ke-t90"/>
                             </connections>
