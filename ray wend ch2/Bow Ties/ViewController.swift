@@ -12,6 +12,7 @@ import CoreData
 class ViewController: UIViewController {
     
   var managedContext: NSManagedObjectContext!
+    var currentBowtie: Bowtie!
   
   @IBOutlet weak var segmentedControl: UISegmentedControl!
   @IBOutlet weak var imageView: UIImageView!
@@ -35,7 +36,8 @@ class ViewController: UIViewController {
     do {
         let results = try managedContext.executeFetchRequest(request) as! [Bowtie]
         
-        populate(results.first!)
+        currentBowtie = results.first
+        populate(currentBowtie)
     } catch let error as NSError {
         print("\(error.localizedDescription)")
     }
@@ -65,12 +67,59 @@ class ViewController: UIViewController {
   }
   
   @IBAction func wear(sender: AnyObject) {
+    let times = currentBowtie.timesWorn!.integerValue
+    currentBowtie.timesWorn = NSNumber(integer: (times + 1))
+    currentBowtie.lastWorn = NSDate()
     
+    do {
+        try managedContext.save()
+    } catch let error as NSError {
+        print("\(error.localizedDescription)")
+    }
+    
+    populate(currentBowtie)
   }
   
   @IBAction func rate(sender: AnyObject) {
     
+    let alert = UIAlertController(title: "New Rating", message: "Rate this bowtie", preferredStyle: .Alert)
+    let cancelAction = UIAlertAction(title: "Cancel", style: .Default, handler: {
+        (action: UIAlertAction) in
+    })
+    
+    let saveAction = UIAlertAction(title: "Save", style: .Default) {
+        (action: UIAlertAction) in
+        
+        let textField = alert.textFields![0] as UITextField
+        self.updateRating(textField.text!)
+    }
+    
+    alert.addTextFieldWithConfigurationHandler {
+        (textField: UITextField!) in
+        textField.keyboardType = .DecimalPad
+    }
+    
+    alert.addAction(cancelAction)
+    alert.addAction(saveAction)
+    
+    presentViewController(alert, animated: true, completion: nil)
+    
   }
+    
+    func updateRating(numericString: String) {
+        currentBowtie.rating = (numericString as NSString).doubleValue
+        
+        do {
+            try managedContext.save()
+            populate(currentBowtie)
+        } catch let error as NSError {
+            print(error.localizedDescription)
+            
+            if error.domain == NSCocoaErrorDomain && (error.code == NSValidationNumberTooLargeError || error.code == NSValidationNumberTooSmallError) {
+                rate(currentBowtie)
+            }
+        }
+    }
     
     func insertSampleData() {
         let fetchRequest = NSFetchRequest(entityName: "Bowtie")
