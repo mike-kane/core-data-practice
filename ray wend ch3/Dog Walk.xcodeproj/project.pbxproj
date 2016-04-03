@@ -9,10 +9,10 @@
 /* Begin PBXBuildFile section */
 		E46A72E91CB0C8FE006C0831 /* CoreDataStack.swift in Sources */ = {isa = PBXBuildFile; fileRef = E46A72E81CB0C8FE006C0831 /* CoreDataStack.swift */; };
 		E46A72EC1CB0D785006C0831 /* DogWalk.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = E46A72EA1CB0D785006C0831 /* DogWalk.xcdatamodeld */; };
-		E46A72F11CB0D9DB006C0831 /* Dog+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = E46A72ED1CB0D9DB006C0831 /* Dog+CoreDataProperties.swift */; };
-		E46A72F21CB0D9DB006C0831 /* Dog.swift in Sources */ = {isa = PBXBuildFile; fileRef = E46A72EE1CB0D9DB006C0831 /* Dog.swift */; };
-		E46A72F31CB0D9DB006C0831 /* Walk+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = E46A72EF1CB0D9DB006C0831 /* Walk+CoreDataProperties.swift */; };
-		E46A72F41CB0D9DB006C0831 /* Walk.swift in Sources */ = {isa = PBXBuildFile; fileRef = E46A72F01CB0D9DB006C0831 /* Walk.swift */; };
+		E46A72F91CB1BC66006C0831 /* Walk+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = E46A72F51CB1BC66006C0831 /* Walk+CoreDataProperties.swift */; };
+		E46A72FA1CB1BC66006C0831 /* Walk.swift in Sources */ = {isa = PBXBuildFile; fileRef = E46A72F61CB1BC66006C0831 /* Walk.swift */; };
+		E46A72FB1CB1BC66006C0831 /* Dog+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = E46A72F71CB1BC66006C0831 /* Dog+CoreDataProperties.swift */; };
+		E46A72FC1CB1BC66006C0831 /* Dog.swift in Sources */ = {isa = PBXBuildFile; fileRef = E46A72F81CB1BC66006C0831 /* Dog.swift */; };
 		FEDA2D8D1B5923B200C68F83 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = FEDA2D8C1B5923B200C68F83 /* AppDelegate.swift */; };
 		FEDA2D8F1B5923B200C68F83 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FEDA2D8E1B5923B200C68F83 /* ViewController.swift */; };
 		FEDA2D921B5923B200C68F83 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = FEDA2D901B5923B200C68F83 /* Main.storyboard */; };
@@ -23,10 +23,10 @@
 /* Begin PBXFileReference section */
 		E46A72E81CB0C8FE006C0831 /* CoreDataStack.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CoreDataStack.swift; sourceTree = "<group>"; };
 		E46A72EB1CB0D785006C0831 /* DogWalk.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = DogWalk.xcdatamodel; sourceTree = "<group>"; };
-		E46A72ED1CB0D9DB006C0831 /* Dog+CoreDataProperties.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Dog+CoreDataProperties.swift"; sourceTree = "<group>"; };
-		E46A72EE1CB0D9DB006C0831 /* Dog.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Dog.swift; sourceTree = "<group>"; };
-		E46A72EF1CB0D9DB006C0831 /* Walk+CoreDataProperties.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Walk+CoreDataProperties.swift"; sourceTree = "<group>"; };
-		E46A72F01CB0D9DB006C0831 /* Walk.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Walk.swift; sourceTree = "<group>"; };
+		E46A72F51CB1BC66006C0831 /* Walk+CoreDataProperties.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Walk+CoreDataProperties.swift"; sourceTree = "<group>"; };
+		E46A72F61CB1BC66006C0831 /* Walk.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Walk.swift; sourceTree = "<group>"; };
+		E46A72F71CB1BC66006C0831 /* Dog+CoreDataProperties.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Dog+CoreDataProperties.swift"; sourceTree = "<group>"; };
+		E46A72F81CB1BC66006C0831 /* Dog.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Dog.swift; sourceTree = "<group>"; };
 		FEDA2D891B5923B200C68F83 /* Dog Walk.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Dog Walk.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		FEDA2D8C1B5923B200C68F83 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		FEDA2D8E1B5923B200C68F83 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -50,10 +50,10 @@
 		FEDA2D801B5923B200C68F83 = {
 			isa = PBXGroup;
 			children = (
-				E46A72ED1CB0D9DB006C0831 /* Dog+CoreDataProperties.swift */,
-				E46A72EE1CB0D9DB006C0831 /* Dog.swift */,
-				E46A72EF1CB0D9DB006C0831 /* Walk+CoreDataProperties.swift */,
-				E46A72F01CB0D9DB006C0831 /* Walk.swift */,
+				E46A72F51CB1BC66006C0831 /* Walk+CoreDataProperties.swift */,
+				E46A72F61CB1BC66006C0831 /* Walk.swift */,
+				E46A72F71CB1BC66006C0831 /* Dog+CoreDataProperties.swift */,
+				E46A72F81CB1BC66006C0831 /* Dog.swift */,
 				FEDA2D8B1B5923B200C68F83 /* Dog Walk */,
 				FEDA2D8A1B5923B200C68F83 /* Products */,
 			);
@@ -153,13 +153,13 @@
 			buildActionMask = 2147483647;
 			files = (
 				E46A72E91CB0C8FE006C0831 /* CoreDataStack.swift in Sources */,
-				E46A72F31CB0D9DB006C0831 /* Walk+CoreDataProperties.swift in Sources */,
-				E46A72F11CB0D9DB006C0831 /* Dog+CoreDataProperties.swift in Sources */,
-				E46A72F21CB0D9DB006C0831 /* Dog.swift in Sources */,
-				E46A72F41CB0D9DB006C0831 /* Walk.swift in Sources */,
 				E46A72EC1CB0D785006C0831 /* DogWalk.xcdatamodeld in Sources */,
+				E46A72F91CB1BC66006C0831 /* Walk+CoreDataProperties.swift in Sources */,
 				FEDA2D8F1B5923B200C68F83 /* ViewController.swift in Sources */,
+				E46A72FA1CB1BC66006C0831 /* Walk.swift in Sources */,
 				FEDA2D8D1B5923B200C68F83 /* AppDelegate.swift in Sources */,
+				E46A72FC1CB1BC66006C0831 /* Dog.swift in Sources */,
+				E46A72FB1CB1BC66006C0831 /* Dog+CoreDataProperties.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

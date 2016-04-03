@@ -110,24 +110,22 @@ class ViewController: UIViewController, UITableViewDataSource {
         return true
     }
     
-    func tableView(tableView: UITableView, commitEditingStyle editingStyle: UITableViewCellEditingStyle, forRowAtIndexPath indexPath: NSIndexPath) {
-        
-        
+    func tableView(tableView: UITableView, commitEditingStyle
+        editingStyle: UITableViewCellEditingStyle, forRowAtIndexPath indexPath: NSIndexPath) {
         if editingStyle == UITableViewCellEditingStyle.Delete {
-            
+            //1
             let walkToRemove = currentDog.walks![indexPath.row] as! Walk
-            
+            //2
             managedContext.deleteObject(walkToRemove)
+            //3
             
             do {
                 try managedContext.save()
-            } catch let error as NSError {
-                print(error.localizedDescription)
+            } catch let error as NSError { print("Could not save: \(error)")
             }
-            
+            //4
             tableView.deleteRowsAtIndexPaths([indexPath], withRowAnimation: UITableViewRowAnimation.Automatic)
-        }
-    }
+        } }
     
     
 }
