@@ -21,11 +21,33 @@ class ViewController: UIViewController, UITableViewDataSource {
   }()
   
   @IBOutlet var tableView: UITableView!
-  var walks:Array<NSDate> = []
+    var currentDog: Dog!
   
   override func viewDidLoad() {
     super.viewDidLoad()
     // Do any additional setup after loading the view, typically from a nib.
+    
+    let dogEntity = NSEntityDescription.entityForName("Dog", inManagedObjectContext: managedContext)
+    
+    let dogName = "Fido"
+    let dogFetch = NSFetchRequest(entityName: "Dog")
+    dogFetch.predicate = NSPredicate(format: "name == %@", dogName)
+    
+    do {
+        let results  = try managedContext.executeFetchRequest(dogFetch) as! [Dog]
+        
+        if results.count > 0 {
+            //Fido was found!  Let's use him
+            currentDog = results.first
+        } else {
+            //Fido wasn't found, create a default dog
+            currentDog = Dog(entity: dogEntity!, insertIntoManagedObjectContext: managedContext)
+            currentDog.name = dogName
+            try managedContext.save()
+        }
+    } catch let error as NSError {
+        print(error.localizedDescription)
+    }
     
     tableView.registerClass(UITableViewCell.self,
       forCellReuseIdentifier: "Cell")
@@ -34,7 +56,7 @@ class ViewController: UIViewController, UITableViewDataSource {
   func tableView(tableView: UITableView,
     numberOfRowsInSection section: Int) -> Int {
       
-      return walks.count
+      return currentDog.walks!.count
   }
   
   func tableView(tableView: UITableView,
@@ -49,16 +71,64 @@ class ViewController: UIViewController, UITableViewDataSource {
       let cell =
       tableView.dequeueReusableCellWithIdentifier("Cell",
         forIndexPath: indexPath) as UITableViewCell
-      
-      let date =  walks[indexPath.row]
-      cell.textLabel!.text = dateFormatter.stringFromDate(date)
+    
+      let walk = currentDog.walks![indexPath.row] as! Walk
+    
+    cell.textLabel!.text = dateFormatter.stringFromDate(walk.date!)
       
       return cell
   }
   
   @IBAction func add(sender: AnyObject) {
-    walks.append(NSDate())
+    
+    //Add new walk entity to core data
+    let walkEntity = NSEntityDescription.entityForName("Walk", inManagedObjectContext: managedContext)
+    
+    let walk = Walk(entity: walkEntity!, insertIntoManagedObjectContext: managedContext)
+    
+    walk.date = NSDate()
+    
+    //insert the new walk into the dog's walks set
+    let walks = currentDog.walks!.mutableCopy() as! NSMutableOrderedSet
+    
+    walks.addObject(walk)
+    
+    currentDog.walks = walks.copy() as? NSOrderedSet
+    
+    //Save managed context
+    
+    do {
+        try managedContext.save()
+    } catch let error as NSError {
+        print(error.localizedDescription)
+    }
+    
     tableView.reloadData()
   }
+    
+    func tableView(tableView: UITableView, canEditRowAtIndexPath indexPath: NSIndexPath) -> Bool {
+        return true
+    }
+    
+    func tableView(tableView: UITableView, commitEditingStyle editingStyle: UITableViewCellEditingStyle, forRowAtIndexPath indexPath: NSIndexPath) {
+        
+        
+        if editingStyle == UITableViewCellEditingStyle.Delete {
+            
+            let walkToRemove = currentDog.walks![indexPath.row] as! Walk
+            
+            managedContext.deleteObject(walkToRemove)
+            
+            do {
+                try managedContext.save()
+            } catch let error as NSError {
+                print(error.localizedDescription)
+            }
+            
+            tableView.deleteRowsAtIndexPaths([indexPath], withRowAnimation: UITableViewRowAnimation.Automatic)
+        }
+    }
+    
+    
 }
 
