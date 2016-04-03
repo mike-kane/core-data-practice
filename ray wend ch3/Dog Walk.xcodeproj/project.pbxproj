@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		E46A72E91CB0C8FE006C0831 /* CoreDataStack.swift in Sources */ = {isa = PBXBuildFile; fileRef = E46A72E81CB0C8FE006C0831 /* CoreDataStack.swift */; };
+		E46A72EC1CB0D785006C0831 /* DogWalk.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = E46A72EA1CB0D785006C0831 /* DogWalk.xcdatamodeld */; };
 		FEDA2D8D1B5923B200C68F83 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = FEDA2D8C1B5923B200C68F83 /* AppDelegate.swift */; };
 		FEDA2D8F1B5923B200C68F83 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FEDA2D8E1B5923B200C68F83 /* ViewController.swift */; };
 		FEDA2D921B5923B200C68F83 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = FEDA2D901B5923B200C68F83 /* Main.storyboard */; };
@@ -17,6 +18,7 @@
 
 /* Begin PBXFileReference section */
 		E46A72E81CB0C8FE006C0831 /* CoreDataStack.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CoreDataStack.swift; sourceTree = "<group>"; };
+		E46A72EB1CB0D785006C0831 /* DogWalk.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = DogWalk.xcdatamodel; sourceTree = "<group>"; };
 		FEDA2D891B5923B200C68F83 /* Dog Walk.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Dog Walk.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		FEDA2D8C1B5923B200C68F83 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		FEDA2D8E1B5923B200C68F83 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -58,6 +60,7 @@
 			children = (
 				FEDA2D8C1B5923B200C68F83 /* AppDelegate.swift */,
 				FEDA2D8E1B5923B200C68F83 /* ViewController.swift */,
+				E46A72EA1CB0D785006C0831 /* DogWalk.xcdatamodeld */,
 				FEDA2D901B5923B200C68F83 /* Main.storyboard */,
 				FEDA2D931B5923B200C68F83 /* Assets.xcassets */,
 				FEDA2D951B5923B200C68F83 /* LaunchScreen.storyboard */,
@@ -138,6 +141,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				E46A72E91CB0C8FE006C0831 /* CoreDataStack.swift in Sources */,
+				E46A72EC1CB0D785006C0831 /* DogWalk.xcdatamodeld in Sources */,
 				FEDA2D8F1B5923B200C68F83 /* ViewController.swift in Sources */,
 				FEDA2D8D1B5923B200C68F83 /* AppDelegate.swift in Sources */,
 			);
@@ -290,6 +294,19 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCVersionGroup section */
+		E46A72EA1CB0D785006C0831 /* DogWalk.xcdatamodeld */ = {
+			isa = XCVersionGroup;
+			children = (
+				E46A72EB1CB0D785006C0831 /* DogWalk.xcdatamodel */,
+			);
+			currentVersion = E46A72EB1CB0D785006C0831 /* DogWalk.xcdatamodel */;
+			path = DogWalk.xcdatamodeld;
+			sourceTree = "<group>";
+			versionGroupType = wrapper.xcdatamodel;
+		};
+/* End XCVersionGroup section */
 	};
 	rootObject = FEDA2D811B5923B200C68F83 /* Project object */;
 }
